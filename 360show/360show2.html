@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<title>360display自动旋转</title>
+<script language=JavaScript>
+ document.oncontextmenu=new Function("event.returnValue=false;");
+ document.onselectstart=new Function("event.returnValue=false;");
+ </script>
+<script type="text/javascript">
+window.onload=function () {
+
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var oImg=document.getElementById('img1');
+	var oImg2=document.getElementsByTagName('img');
+	var Dis=0;
+	var iNow=0;
+	var OldInow=0;
+	for(var i=0;i<77;i++){
+		var oImg1=document.createElement('img');
+		oImg1.src='miaov ('+i+').jpg';
+		oDiv2.appendChild(oImg1);
+	}
+	oImg2[0].style['display']='block';
+		
+	setInterval(function(){
+		// iNow
+		var oImgAll=oDiv2.getElementsByTagName('img');
+		for(var a=0;a<=76;a++){
+
+			if(a===iNow){
+				oImgAll[iNow].style['display']='block';
+			}
+			else{
+				oImgAll[a].style['display']='none';
+			}
+			
+		}
+			
+			iNow++;
+		if(iNow==77){
+			iNow=0;
+		}
+	},60);
+	
+	document.onmousedown=function(){
+		return false;
+	}
+	var v_Height=$(window).height();
+	var v_Width=$(window).width();
+	$('#div2').css({'top':(v_Height-$('#div2').height())*0.2,'left':(v_Width-$('#div2').width())*0.2});
+
+}
+
+</script>
+<style>
+body{
+
+ 
+}
+
+   #div2{
+   	position: absolute;
+   }
+   img{
+   display: none;
+   	position: absolute;
+   }
+</style>
+</head>
+
+<body>
+<div id="div2"></div>
+</body>
+</html>

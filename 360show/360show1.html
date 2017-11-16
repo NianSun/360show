@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>360改变地址自动旋转</title>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script language=JavaScript>
+ document.oncontextmenu=new Function("event.returnValue=false;");
+ document.onselectstart=new Function("event.returnValue=false;");
+ </script>
+<script type="text/javascript">
+window.onload=function () {
+
+	var oDiv=document.getElementById('div1');
+	var oImg=document.getElementById('img1');
+	var iNow=0;
+	
+	setInterval(function(){
+
+		oImg.src='miaov ('+iNow+').jpg';
+		iNow++;
+		if(iNow>76){
+			iNow=0;
+		}
+	},30);
+	
+var v_Height=$(window).height();
+	var v_Width=$(window).width();
+	$('#img1').css({'top':(v_Height-$('#img1').height())*0.5,'left':(v_Width-$('#img1').width())*0.5});
+
+}
+
+</script>
+<style>
+body{
+
+	/*background-color: #ffb65d;*/
+ 
+}
+
+   #div1{
+   	background-color: #AAA;
+   	width: 200px;
+   	height: 200px;
+   }
+   img{
+   /*	width: 800px;
+   	height: 400px;*/
+   	position: absolute;
+   	top: 100px;
+   	left: 350px;
+   }
+</style>
+</head>
+
+<body>
+<img id="img1" src="miaov (0).jpg" alt="" />
+</body>
+</html>
